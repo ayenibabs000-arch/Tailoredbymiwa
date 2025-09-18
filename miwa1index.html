@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>TAILORED BY MIWA — Shop Dresses</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F3F1;
+    --paper:#ffffff;
+    --ink:#0F1724;
+    --muted:#6B7280;
+    --accent:#C9A16B;
+    --radius:12px;
+    --glass: rgba(255,255,255,0.6);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(180deg,var(--bg),#fff);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    padding:32px;
+  }
+
+  /* header */
+  .site-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    max-width:1200px;
+    margin:0 auto 28px;
+  }
+  .brand {
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .logo-badge{
+    width:64px;height:64px;display:grid;place-items:center;
+    background:linear-gradient(180deg,rgba(201,161,107,0.12),rgba(201,161,107,0.04));
+    border-radius:12px; padding:8px;
+  }
+  .wordmark h1{margin:0;font-family:"Playfair Display", serif;font-size:18px;letter-spacing:1px}
+  .nav {
+    display:flex;gap:16px;align-items:center;
+  }
+  .nav a{color:var(--ink); text-decoration:none; font-weight:600;}
+
+  /* hero */
+  .hero{
+    max-width:1200px;margin:0 auto 36px;
+    background:var(--paper);
+    border-radius:16px;
+    padding:28px;
+    display:grid;
+    grid-template-columns:1fr 420px;
+    gap:24px;
+    align-items:center;
+    box-shadow:0 8px 30px rgba(16,24,40,0.06);
+  }
+  .hero h2{font-family:"Playfair Display",serif;font-size:36px;margin:0 0 10px;}
+  .hero p{color:var(--muted);margin:0 0 18px;}
+  .btn{
+    background:var(--ink); color:white; padding:12px 18px;border-radius:10px;
+    text-decoration:none;display:inline-block;font-weight:600;
+  }
+  .hero-img{border-radius:12px;overflow:hidden;}
+  .hero-img img{display:block;width:100%;height:100%;object-fit:cover}
+
+  /* product grid */
+  .container{max-width:1200px;margin:0 auto}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{
+    background:var(--paper);border-radius:14px;padding:12px;transition:transform .22s, box-shadow .22s;
+    border:1px solid rgba(16,24,40,0.04);
+  }
+  .card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(16,24,40,0.08)}
+  .card .preview{height:360px;border-radius:10px;overflow:hidden; background:linear-gradient(180deg,#eee,#ddd)}
+  .preview img{width:100%;height:100%;object-fit:cover;display:block}
+  .card h3{font-size:16px;margin:12px 0 6px;font-weight:600}
+  .card .price{font-weight:700;color:var(--ink)}
+  .card .meta{display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .small{font-size:13px;color:var(--muted)}
+
+  /* product actions */
+  .actions{display:flex;gap:8px;margin-top:10px}
+  .btn-ghost{padding:8px 12px;border-radius:10px;border:1px solid rgba(16,24,40,0.06);background:transparent}
+  .add{background:var(--accent);color:var(--ink);border:none;padding:8px 12px;border-radius:10px;font-weight:700}
+
+  /* footer */
+  footer{max-width:1200px;margin:36px auto 0;padding-top:20px;border-top:1px solid rgba(16,24,40,0.04);display:flex;justify-content:space-between;align-items:center;color:var(--muted)}
+
+  /* modal */
+  .modal-back{position:fixed;inset:0;background:rgba(5,10,20,0.45);display:none;align-items:center;justify-content:center;padding:24px;z-index:60}
+  .modal{background:var(--paper);border-radius:14px;max-width:900px;width:100%;display:grid;grid-template-columns:1fr 360px;gap:18px;padding:18px}
+  .modal .preview{height:420px}
+  .modal .info h3{margin:0 0 6px;font-family:"Playfair Display",serif}
+  .close{position:absolute;top:18px;right:18px;background:transparent;border:none;font-size:20px;cursor:pointer;color:var(--paper)}
+
+  /* responsive */
+  @media (max-width:1000px){
+    .hero{grid-template-columns:1fr 320px}
+    .grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:680px){
+    body{padding:18px;}
+    .site-header{flex-direction:column;align-items:stretch}
+    .hero{grid-template-columns:1fr; padding:18px}
+    .hero-img{order:-1;margin-bottom:14px}
+    .grid{grid-template-columns:1fr}
+    .modal{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <!-- Logo (SVG) -->
+    <div class="logo-badge" aria-hidden="true">
+      <!-- Monogram SVG: unique, simple -->
+      <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tailored by Miwa logo">
+        <rect x="0.5" y="0.5" width="45" height="45" rx="10" stroke="rgba(16,24,40,0.06)"></rect>
+        <path d="M13 30C18 15 31 15 33 30" stroke="#C9A16B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="16.5" cy="21" r="1.8" fill="#C9A16B"/>
+      </svg>
+    </div>
+
+    <div class="wordmark">
+      <h1>TAILORED BY MIWA</h1>
+      <div class="small">Refined Dresses • Ethically Made</div>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="site">
+    <a href="#collection">Collection</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" aria-labelledby="hero-head">
+  <div>
+    <h2 id="hero-head">Dresses that tell your story</h2>
+    <p>Timeless silhouettes, crafted locally. Explore ready-to-wear and bespoke pieces from our latest collection.</p>
+    <a href="#collection" class="btn">Shop Collection</a>
+  </div>
+  <div class="hero-img" aria-hidden="true">
+    <img src="https://via.placeholder.com/720x920?text=Featured+Dress" alt="Featured dress — elegant evening dress">
+  </div>
+</section>
+
+<main class="container">
+  <section id="collection">
+    <div style="display:flex;justify-content:space-between;align-items:end;margin-bottom:18px">
+      <h2 style="margin:0;font-family:'Playfair Display', serif">Collection</h2>
+      <div class="small">Showing 6 styles</div>
+    </div>
+
+    <div class="grid" id="products">
+      <!-- product cards injected by JS -->
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div>
+    © <strong>TAILORED BY MIWA</strong> — Made with care
+  </div>
+  <div class="small">Follow us — instagram @tailoredbymiwa</div>
+</footer>
+
+<!-- Modal -->
+<div class="modal-back" id="modal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="close" id="close" aria-label="Close modal">✕</button>
+    <div class="preview" id="modal-img"><img src="" alt=""></div>
+    <div class="info" style="padding:6px 4px">
+      <h3 id="modal-title"></h3>
+      <div class="small" id="modal-sku"></div>
+      <p id="modal-desc" style="color:var(--muted);margin-top:12px">—</p>
+      <div style="margin-top:14px;font-size:20px;font-weight:700" id="modal-price"></div>
+      <div class="actions">
+        <button class="btn-ghost" id="fav">♡ Save</button>
+        <button class="add" id="add-to-cart">Add to Bag</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Sample product data */
+const products = [
+  { id:1, name: "Evelyn Silk Dress", price: 220, img:"https://via.placeholder.com/720x920?text=Evelyn+Silk", sku:"TBM-001", desc:"Bias-cut silk midi, lined, side zip. Gentle A-line with subtle drape." },
+  { id:2, name: "Marin Shift Dress", price: 145, img:"https://via.placeholder.com/720x920?text=Marin+Shift", sku:"TBM-002", desc:"Crisp cotton shift—pocket details and tailored collar." },
+  { id:3, name: "Asha Wrap Dress", price: 185, img:"https://via.placeholder.com/720x920?text=Asha+Wrap", sku:"TBM-003", desc:"Soft crepe wrap with self-tie waist and gentle flare." },
+  { id:4, name: "Noor Maxi Gown", price: 360, img:"https://via.placeholder.com/720x920?text=Noor+Maxi", sku:"TBM-004", desc:"Hand-sewn pleats and structured bodice for evening elegance." },
+  { id:5, name: "Luna Shirt Dress", price: 98, img:"https://via.placeholder.com/720x920?text=Luna+Shirt", sku:"TBM-005", desc:"Lightweight linen, relaxed fit—perfect for daywear." },
+  { id:6, name: "Kira Mini Dress", price: 130, img:"https://via.placeholder.com/720x920?text=Kira+Mini", sku:"TBM-006", desc:"Playful mini with puff sleeve and hidden zip." }
+];
+
+const grid = document.getElementById('products');
+
+function currency(n){
+  return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(n);
+}
+
+function makeCard(p){
+  const div = document.createElement('div');
+  div.className = 'card';
+  div.innerHTML = `
+    <div class="preview"><img src="${p.img}" alt="${p.name}"></div>
+    <h3>${p.name}</h3>
+    <div class="meta"><div class="price">${currency(p.price)}</div><div class="small">${p.sku}</div></div>
+    <div class="actions">
+      <button class="btn-ghost" data-id="${p.id}" aria-label="Quick view ${p.name}">Quick view</button>
+      <button class="add" data-add="${p.id}">Add</button>
+    </div>
+  `;
+  return div;
+}
+
+/* render */
+products.forEach(p => grid.appendChild(makeCard(p)));
+
+/* modal logic */
+const modal = document.getElementById('modal');
+const mimg = document.getElementById('modal-img').querySelector('img');
+const mtitle = document.getElementById('modal-title');
+const mdesc = document.getElementById('modal-desc');
+const mprice = document.getElementById('modal-price');
+const msku = document.getElementById('modal-sku');
+
+document.addEventListener('click', (e)=>{
+  const q = e.target.closest('[data-id]');
+  if(q){
+    const id = +q.dataset.id;
+    openModal(id);
+  }
+  const add = e.target.closest('[data-add]');
+  if(add){
+    const id = +add.dataset.add;
+    alert('Added to bag: ' + products.find(x=>x.id===id).name);
+  }
+});
+
+function openModal(id){
+  const p = products.find(x=>x.id===id);
+  if(!p) return;
+  mimg.src = p.img;
+  mimg.alt = p.name;
+  mtitle.textContent = p.name;
+  mdesc.textContent = p.desc;
+  mprice.textContent = currency(p.price);
+  msku.textContent = p.sku;
+  modal.style.display = 'flex';
+}
+document.getElementById('close').addEventListener('click', ()=> modal.style.display='none');
+modal.addEventListener('click', (e)=>{ if(e.target===modal) modal.style.display='none' });
+
+/* keyboard close */
+document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') modal.style.display='none' });
+</script>
+</body>
+</html>
